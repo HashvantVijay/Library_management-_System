@@ -1,0 +1,60 @@
+{% extends 'base.html' %} {% block content %}
+<script>
+	function delete_record(id) {
+		if (confirm("Do you want to delete the record ?")) {
+			location.href = "/author/delete/" + id;
+		}
+	}
+
+</script>
+<div class="wrapper col5">
+	<div id="container">
+		<h3>Author Reports</h3>
+		{% if messages %}
+		<div class="alert alert-success fade in" style="margin:10px;">
+			{% for message in messages %}
+			<strong>{{ message }}</strong> {% endfor %}
+		</div>
+		{% endif %}
+		<div class="col-lg-12">
+			<form name="frm" action="" method="post">
+				{% csrf_token %}
+				<section class="panel">
+					<table summary="Summary Here" cellpadding="0" cellspacing="0">
+						<thead>
+							<tr>
+								<th><i class="icon-resize-vertical"></i></th>
+								<th>Name</th>
+								<th>Email</th>
+								<th>Mobile</th>
+								<th>Description</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							{% for author in authorlist %}
+							<tr>
+								<td><div class="checker" id="uniform-undefined"><span>{{ forloop.counter }}</div></td>
+									<td>{{author.author_name}}</td>
+									<td>{{author.author_email}}</td>
+									<td>{{author.author_contact}}</td>
+									<td>{{author.author_description}}</td>
+									<td>
+										<div class="btn-group">
+												<a href="/author/update/{{author.author_id}}" class="btn btn-success">Edit</a> | 
+											<a href="JavaScript:delete_record({{author.author_id}})">Delete</a>
+										</div>
+									</td>
+                </tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	</section>
+	<input type="hidden" name="act" />
+	<input type="hidden" name="author_id" id="recordID" />
+ </form>
+</div>
+</div>
+</div>
+{% endblock content %}

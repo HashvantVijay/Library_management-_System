@@ -1,0 +1,81 @@
+{% extends 'base.html' %} {% block content %}
+<script>
+  $( function() {
+    $( "#employee_dob" ).datepicker();
+  } );
+  </script>
+
+<div class="wrapper col5">
+  <div id="container">
+  <div id="respond">
+		<form enctype="multipart/form-data" method="post" class="form-signin wow fadeInUp" action="" style="max-width:60%">
+			{% csrf_token %}
+			<h2 class="form-signin-heading">
+				Employee Details Management
+			</h2>
+			{% if messages %}
+				<div class="alert alert-success fade in" style="margin:10px;">
+					{% for message in messages %}
+						<strong>{{ message }}</strong>
+					{% endfor %}
+				</div>
+			{% endif %}
+				<p>
+					<input type="text" placeholder="First Name" autofocus="" name="employee_first_name" id="employee_first_name" value="{{employeedetails.employee_first_name}}">
+				</p>
+				<p>
+					<input type="text" placeholder="Middle Name" autofocus="" name="employee_middle_name" id="employee_middle_name" value="{{employeedetails.employee_middle_name}}">
+				</p>
+				<p>
+					<input type="text" class="form-control" placeholder="Last Name" autofocus="" name="employee_last_name" id="employee_last_name" value="{{employeedetails.employee_last_name}}">
+				</p>
+				<p>
+					<input type="text" class="form-control" placeholder="Username" autofocus="" name="employee_user" id="employee_user" value="{{employeedetails.employee_user}}">
+				</p>
+				<p>
+					<input type="password" class="form-control" placeholder="Password" autofocus="" name="employee_password" id="user_password" value="{{employeedetails.employee_password}}">
+				</p>
+				<p>
+					<input type="password" class="form-control" placeholder="Confirm Password" autofocus="" name="user_confirm_password" id="user_confirm_password" value="{{employeedetails.employee_password}}">
+				</p>
+				
+				<p>
+					
+					<input type="text" class="form-control" placeholder="User Email" autofocus="" name="employee_email" id="employee_email" value="{{employeedetails.employee_email}}">
+				</p>
+				<p>
+					
+					<input type="text" class="form-control" placeholder="Mobile" autofocus="" name="employee_mobile" id="employee_mobile" value="{{employeedetails.employee_mobile}}">
+				</p>
+				
+				
+				<p>
+						<input type="radio" name="employee_gender" value="Male" {% ifequal employeedetails.employee_gender 'Male' %} checked="checked"{% endifequal %} required> Male &nbsp&nbsp
+						<input type="radio" name="employee_gender" value="Female" {% ifequal employeedetails.employee_gender 'Female' %} checked="checked"{% endifequal %} required> Female
+			
+				</p>
+				<p>
+					<input type="text" class="form-control" placeholder="Date of Birth" autofocus="" id="employee_dob" name="employee_dob" value="{{employeedetails.employee_dob}}">
+				</p>
+				
+				<p>
+					<input type="text" class="form-control" placeholder="Nationality" autofocus="" id="employee_nationalty" name="employee_nationalty" value="{{employeedetails.employee_nationalty}}">
+				</p>
+				<p>
+					<input type="text" class="form-control" placeholder="Village" autofocus="" name="employee_village" id="employee_village" value="{{employeedetails.employee_village}}">
+				</p>
+				<p>
+					<input type="text" class="form-control" placeholder="Address" autofocus="" name="employee_address" id="employee_address" value="{{employeedetails.employee_address}}">
+				</p>
+				<p>
+            <input name="submit" type="submit" id="submit" value="Submit" />
+          </p>
+			</div>
+			<input type="hidden" name="act" value="save_user">
+			<input type="hidden" name="avail_image" value="{{employeedetails.user_image}}">
+			<input type="hidden" name="user_id" value="{{employeedetails.user_id}}">
+		</form>
+	</div>
+</div>
+</div>
+{% endblock content %}

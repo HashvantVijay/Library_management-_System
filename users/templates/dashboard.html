@@ -1,0 +1,33 @@
+{% extends 'base.html' %} {% block content %}
+{% load static from staticfiles%}
+<br class="clear" />
+<div class="wrapper col3"></div>
+<div class="wrapper col4">
+  <div id="services" style="width:1100px">
+  <h3>Dashboard</h3>
+    <div  style="width:50%; float:left">
+      <ul class="my-menu">
+          <li><a href="/author/add">Add Author</a></li>
+          <li><a href="/book/add">Add New Book</a></li>
+          <li><a href="/category/add">Add Book Category</a></li>
+          <li><a href="/issue/add">Issue Book</a></li>
+          <li><a href="/language/add">Add Languages</a></li>
+          <li><a href="/publication/add">Add Publication</a></li>
+          <li><a href="/author">Author Report</a></li>
+          <li><a href="/book">Book Report</a></li>
+          <li><a href="/category">Book Category Report</a></li>
+          <li><a href="/issue">Issue Book Report</a></li>
+          <li><a href="/language">Languages Report</a></li>
+          <li><a href="/publication">Publication Report</a></li>
+          <li><a href="/users/changepassword">Change Password</a></li>
+          <li><a href="/users/logout" class="last">Logout</a></li>
+      </ul>
+    </div>
+    <div style="margin-left:20px; float:right;">
+        <img src="{% static '/assets/img/dashboard.jpg' %}" style="width:510px;">
+    </div>
+    <br class="clear" />
+  </div>
+</div>
+<br class="clear" /><br class="clear" />
+{% endblock content %}

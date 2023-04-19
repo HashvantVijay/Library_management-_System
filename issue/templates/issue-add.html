@@ -1,0 +1,58 @@
+{% extends 'base.html' %} {% block content %}
+<!-- divider section -->
+
+<div class="wrapper col5">
+	<div id="container">
+		<div id="respond">
+			<form id="contact_form" action="#" method="POST" enctype="multipart/form-data">
+				{% csrf_token %}
+				<h2 class="form-signin-heading">
+					{% if fn == "add" %} Add Book Issue {% elif fn == "update" %} Update Book Issue {% endif %}
+				</h2>
+				{% if messages %}
+				<div class="alert alert-success fade in" style="margin:10px;">
+					{% for message in messages %}
+					<strong>{{ message }}</strong> {% endfor %}
+				</div>
+				{% endif %}
+				<div class="col-md-8 col-sm-8">
+					<div class="col-md-12 col-sm-12">
+					<select name="issue_to_user_id" required class="form-control" placeholder="Select Student" autofocus=""  required/> 
+					<option value="Select Student">Select Student</option>
+					{% for userissue in userissuelist %}
+					<option value="{{ userissue.student_id }}" {% ifequal userissue.student_id issueDetails.issue_to_user_id %} selected="selected"{% endifequal %}>{{userissue.student_name}}</option>
+					{% endfor %}
+					</select>			
+					</div>
+					<div class="col-md-12 col-sm-12">
+					<select name="issue_book_id" required class="form-control" placeholder="Select Book" autofocus=""  required/> 
+					<option value="Select Book">Select Book</option>
+					{% for bookissue in bookissuelist %}
+					<option value="{{ bookissue.book_id }}" {% ifequal bookissue.book_id issueDetails.issue_book_id %} selected="selected"{% endifequal %}>{{bookissue.book_title}}</option>
+					{% endfor %}
+					</select>			
+					</div>
+					<div class="col-md-12 col-sm-12">
+					<input type="text" class="form-control" placeholder="Issue Date" autofocus="" name="issue_date" id="issue_date" value="{{issueDetails.issue_date}}" required>			
+					</div>					
+					
+					<div class="col-md-12 col-sm-12" style="margin-top:10px;">
+					<textarea name="issue_description" rows="5" class="form-control" id="issue_description" placeholder="Issue Description">{{issueDetails.issue_description}}</textarea>			
+					</div>
+					
+					<div class="col-md-3 col-sm-3">
+					<input name="submit" type="submit" class="form-control" id="submit" value="Submit">
+					</div>
+				</div>
+				<div class="col-md-2 col-sm-2"></div>
+				<input type="hidden" name="act" value="check_login">
+			</form>
+			<div class="cleaner"></div>
+		</div>
+
+		<div class="cleaner"></div>
+	</div>
+	<!-- end of content wrapper -->
+</div>
+<!-- end of content wrapper -->
+{% endblock content %}

@@ -1,0 +1,98 @@
+{% extends 'base.html' %} {% block content %}
+<!-- divider section -->
+
+<div class="wrapper col5">
+	<div id="container">
+		<div id="respond">
+			<form id="contact_form" action="#" method="POST" enctype="multipart/form-data">
+				{% csrf_token %}
+				<h2 class="form-signin-heading">
+					{% if fn == "add" %} Add New Book {% elif fn == "update" %} Update Book {% endif %}
+				</h2>
+				{% if messages %}
+				<div class="alert alert-success fade in" style="margin:10px;">
+					{% for message in messages %}
+					<strong>{{ message }}</strong> {% endfor %}
+				</div>
+				{% endif %}
+				<div class="col-md-12 col-sm-12">
+					<div class="col-md-12 col-sm-12">
+					<input type="text" class="form-control" placeholder="Book Name" autofocus="" name="book_title" id="book_title" value="{{bookDetails.book_title}}" required>			
+					</div>
+					<div class="col-md-6 col-sm-6">
+					<select name="book_author_id" required class="form-control" placeholder="Select Author" autofocus=""  required/> 
+					<option value="Please Select">Select Author</option>
+					{% for author in authorlist %}
+					<option value="{{ author.author_id }}" {% ifequal author.author_id bookDetails.book_author_id %} selected="selected"{% endifequal %}>{{author.author_name}}</option>
+					{% endfor %}
+					</select>
+					</div>
+					<div class="col-md-6 col-sm-6">
+					<select name="book_publication_id" required class="form-control" placeholder="Select Publication" autofocus=""  required/> 
+					<option value="Please Select">Select Publication</option>
+					{% for publication in publicationlist %}
+					<option value="{{ publication.publication_id }}" {% ifequal publication.publication_id bookDetails.book_publication_id %} selected="selected"{% endifequal %}>{{publication.publication_name}}</option>
+					{% endfor %}
+					</select>
+					</div>
+					
+					<div class="col-md-6 col-sm-6">
+					<select name="book_category_id" required class="form-control" placeholder="Select Category" autofocus=""  required/> 
+					<option value="Please Select">Select Category</option>
+					{% for category in categorylist %}
+					<option value="{{ category.category_id }}" {% ifequal category.category_id bookDetails.book_category_id %} selected="selected"{% endifequal %}>{{category.category_name}}</option>
+					{% endfor %}
+					</select>
+					</div>
+					<div class="col-md-6 col-sm-6">
+					<select name="book_language_id" required class="form-control" placeholder="Select Language" autofocus=""  required/> 
+					<option value="Please Select">Select Language</option>
+					{% for language in languagelist %}
+					<option value="{{ language.language_id }}" {% ifequal language.language_id bookDetails.book_language_id %} selected="selected"{% endifequal %}>{{language.language_name}}</option>
+					{% endfor %}
+					</select>
+					</div>
+					
+					<div class="col-md-6 col-sm-6">
+					<input type="text" class="form-control" placeholder="ISBN Number" autofocus="" name="book_isbn" id="book_isbn" value="{{bookDetails.book_isbn}}" required>			
+					</div>
+					<div class="col-md-6 col-sm-6">
+					<input type="text" class="form-control" placeholder="Book Edition" autofocus="" name="book_edition" id="book_edition" value="{{bookDetails.book_edition}}" required>			
+					</div>
+					
+					<div class="col-md-6 col-sm-6">
+					<input type="text" class="form-control" placeholder="Edition Year" autofocus="" name="book_edition_year" id="book_edition_year" value="{{bookDetails.book_edition_year}}" required>			
+					</div>
+					<div class="col-md-6 col-sm-6">
+					<input type="text" class="form-control" placeholder="Number of copies" autofocus="" name="book_number_copies" id="book_number_copies" value="{{bookDetails.book_number_copies}}" required>			
+					</div>
+					
+					<div class="col-md-6 col-sm-6">
+					<input type="text" class="form-control" placeholder="Volume" autofocus="" name="book_volume" id="book_volume" value="{{bookDetails.book_volume}}" required>			
+					</div>
+					<div class="col-md-6 col-sm-6">
+					<input type="text" class="form-control" placeholder="Date of Purchase" autofocus="" name="book_date_purchase" id="book_date_purchase" value="{{bookDetails.book_date_purchase}}" required>			
+					</div>
+					
+					<div class="col-md-6 col-sm-6">
+					<input type="number" class="form-control" placeholder="Price" autofocus="" name="book_price" id="book_price" value="{{bookDetails.book_price}}" required>			
+					</div>
+					<div class="col-md-6 col-sm-6">
+					<textarea name="book_description" rows="5" class="form-control" id="book_description" placeholder="Description">{{bookDetails.book_description}}</textarea>			
+					</div>
+					
+					<div class="col-md-3 col-sm-3">
+					<input name="submit" type="submit" class="form-control" id="submit" value="Submit">
+					</div>
+				</div>
+				<input type="hidden" name="act" value="check_login">
+			</form>
+			<div class="cleaner"></div>
+		</div>
+
+		<div class="cleaner"></div>
+	</div>
+	<!-- end of content wrapper -->
+</div>
+<!-- end of content wrapper -->
+{% endblock content %}

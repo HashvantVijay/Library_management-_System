@@ -1,0 +1,47 @@
+{% extends 'base.html' %} {% block content %}
+<!-- divider section -->
+
+<div class="wrapper col5">
+	<div id="container">
+		<div id="respond">
+			<form id="contact_form" action="#" method="POST" enctype="multipart/form-data">
+				{% csrf_token %}
+				<h2 class="form-signin-heading">
+					{% if fn == "add" %} Add Author {% elif fn == "update" %} Update Author {% endif %}
+				</h2>
+				{% if messages %}
+				<div class="alert alert-success fade in" style="margin:10px;">
+					{% for message in messages %}
+					<strong>{{ message }}</strong> {% endfor %}
+				</div>
+				{% endif %}
+				<div class="col-md-6 col-sm-6">
+					<div class="col-md-12 col-sm-12">
+						<input name="author_name" type="text" class="form-control" id="author_name" placeholder="Author Name" value="{{authorDetails.author_name}}">
+					</div>
+					<div class="col-md-12 col-sm-12">
+						<input name="author_contact" type="text" class="form-control" id="author_contact" placeholder="Author Contact" value="{{authorDetails.author_contact}}">
+					</div>
+					<div class="col-md-12 col-sm-12">
+						<input name="author_email" type="email" class="form-control" id="author_email" placeholder="Author Email" value="{{authorDetails.author_email}}">
+					</div>
+					<div class="col-md-12 col-sm-12">
+						<textarea name="author_description" rows="5" class="form-control" id="author_description" placeholder="Description">{{authorDetails.author_description}}</textarea>
+					</div>
+
+					<div class="col-md-4 col-sm-4">
+						<input name="submit" type="submit" class="form-control" id="submit" value="Submit">
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-3"></div>
+				<input type="hidden" name="act" value="check_login">
+			</form>
+			<div class="cleaner"></div>
+		</div>
+
+		<div class="cleaner"></div>
+	</div>
+	<!-- end of content wrapper -->
+</div>
+<!-- end of content wrapper -->
+{% endblock content %}

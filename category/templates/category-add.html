@@ -1,0 +1,43 @@
+{% extends 'base.html' %} {% block content %}
+<!-- divider section -->
+
+<div class="wrapper col5">
+	<div id="container">
+		<div id="respond">
+			<form id="contact_form" action="#" method="POST" enctype="multipart/form-data">
+				{% csrf_token %}
+				<h2 class="form-signin-heading">
+					{% if fn == "add" %} Add Book Category {% elif fn == "update" %} Update Book Category {% endif %}
+				</h2>
+				{% if messages %}
+				<div class="alert alert-success fade in" style="margin:10px;">
+					{% for message in messages %}
+					<strong>{{ message }}</strong> {% endfor %}
+				</div>
+				{% endif %}
+				<div class="col-md-8 col-sm-8">
+					<div class="col-md-12 col-sm-12">
+					<input type="text" class="form-control" placeholder="Category Name" autofocus="" name="category_name" id="category_name" value="{{categoryDetails.category_name}}" required>			
+					</div>
+					
+					
+					<div class="col-md-12 col-sm-12" style="margin-top:10px">
+					<textarea name="category_description" rows="5" class="form-control" id="category_description" placeholder="Description">{{categoryDetails.category_description}}</textarea>			
+					</div>
+					
+					<div class="col-md-3 col-sm-3">
+					<input name="submit" type="submit" class="form-control" id="submit" value="Submit">
+					</div>
+				</div>
+				<div class="col-md-2 col-sm-2"></div>
+				<input type="hidden" name="act" value="check_login">
+			</form>
+			<div class="cleaner"></div>
+		</div>
+
+		<div class="cleaner"></div>
+	</div>
+	<!-- end of content wrapper -->
+</div>
+<!-- end of content wrapper -->
+{% endblock content %}

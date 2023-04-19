@@ -1,0 +1,48 @@
+{% extends 'base.html' %} {% block content %}
+<!-- divider section -->
+
+<div class="wrapper col5">
+	<div id="container">
+		<div id="respond">
+			<form id="contact_form" action="#" method="POST" enctype="multipart/form-data">
+				{% csrf_token %}
+				<h2 class="form-signin-heading">
+					{% if fn == "add" %} Add Book Publication {% elif fn == "update" %} Update Book Publication {% endif %}
+				</h2>
+				{% if messages %}
+				<div class="alert alert-success fade in" style="margin:10px;">
+					{% for message in messages %}
+					<strong>{{ message }}</strong> {% endfor %}
+				</div>
+				{% endif %}
+				<div class="col-md-8 col-sm-8">
+					<div class="col-md-12 col-sm-12">
+					<input type="text" class="form-control" placeholder="Publication Name" autofocus="" name="publication_name" id="publication_name" value="{{publicationDetails.publication_name}}" required>			
+					</div>
+					<div class="col-md-12 col-sm-12">
+					<input type="text" class="form-control" placeholder="Publication Contact" autofocus="" name="publication_contact" id="publication_contact" value="{{publicationDetails.publication_contact}}" required>			
+					</div>
+					<div class="col-md-12 col-sm-12">
+					<input type="email" class="form-control" placeholder="Publication Email" autofocus="" name="publication_email" id="publication_email" value="{{publicationDetails.publication_email}}" required>			
+					</div>					
+					
+					<div class="col-md-12 col-sm-12">
+					<textarea name="publication_address" rows="5" class="form-control" id="publication_address" placeholder="Publication Address">{{publicationDetails.publication_address}}</textarea>			
+					</div>
+					
+					<div class="col-md-3 col-sm-3">
+					<input name="submit" type="submit" class="form-control" id="submit" value="Submit">
+					</div>
+				</div>
+				<div class="col-md-2 col-sm-2"></div>
+				<input type="hidden" name="act" value="check_login">
+			</form>
+			<div class="cleaner"></div>
+		</div>
+
+		<div class="cleaner"></div>
+	</div>
+	<!-- end of content wrapper -->
+</div>
+<!-- end of content wrapper -->
+{% endblock content %}

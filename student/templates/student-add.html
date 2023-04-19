@@ -1,0 +1,111 @@
+{% extends 'base.html' %} {% block content %}
+<!-- divider section -->
+
+<div class="wrapper col5">
+	<div id="container">
+		<div id="respond">
+			<form id="contact_form" action="#" method="POST" enctype="multipart/form-data">
+				{% csrf_token %}
+				<h2 class="form-signin-heading">
+					{% if fn == "add" %} Add Student {% elif fn == "update" %} Update Student {% endif %}
+				</h2>
+				{% if messages %}
+				<div class="alert alert-success fade in" style="margin:10px;">
+					{% for message in messages %}
+					<strong>{{ message }}</strong> {% endfor %}
+				</div>
+				{% endif %}
+			
+				<div class="form-group">
+					<label for="name">Roll No</label></br>
+					<input type="text" value="{{studentdetails.student_roll}}" name="student_roll" id="student_roll" class="form-control" placeholder="Student Roll Number"></br>
+				</div>
+				<div class="form-group">
+					<label for="name">Name</label></br>
+					<input type="text" value="{{studentdetails.student_name}}" name="student_name" id="student_name" class="form-control" placeholder="Student Name"></br>
+				</div>
+				<div class="form-group">
+					<label for="name">Email</label></br>
+					<input type="email" value="{{studentdetails.student_email}}" name="student_email" id="student_email" class="form-control" placeholder="Student Email"></br>
+				</div>
+				<div class="clear"></div>
+				<div class="form-group">
+					<label>Gender {{studentdetails.student_gender}}</label></br>
+					<span class="form-control">
+						<input type="radio" class="radio-inline" name="student_gender" value="Male" {% ifequal studentdetails.student_gender 'Male' %} checked="checked"{% endifequal %} required> Male &nbsp&nbsp
+						<input type="radio" class="radio-inline" name="student_gender" value="Female" {% ifequal studentdetails.student_gender 'Female' %} checked="checked"{% endifequal %} required> Female
+					</span>
+				</div>				
+				<div class="form-group">
+					<label for="name">Phone</label></br>
+					<input type="text" value="{{studentdetails.student_phone}}" name="student_phone" id="student_phone" class="form-control" placeholder="Student Phone"></br>
+				</div>
+				<div class="clear"></div>
+				<div class="form-group">
+					<label for="name">Date of Birth</label></br>
+					<input type="text" placeholder="Date of Birth" id="student_dob" name="student_dob" value="{{studentdetails.student_dob}}"></br>
+				</div>
+				<div class="form-group">
+					<label for="name">City</label></br>
+					<select name="student_city" required class="form-control" placeholder="Select City" autofocus="" /> 
+					<option value="">Please Select</option>
+					{% for city in citylist %}
+					<option value="{{ city.city_id }}" {% ifequal city.city_id|stringformat:"s" studentdetails.student_city %} selected="selected"{% endifequal %}>{{city.city_name}}</option>
+					{% endfor %}
+					</select></br>
+				</div>
+				<div class="form-group">
+					<label for="name">State</label></br>
+					<select name="student_state" required class="form-control" placeholder="Select State" autofocus="" /> 
+					<option value="">Please Select</option>
+					{% for state in statelist %}
+					<option value="{{ state.state_id }}" {% ifequal state.state_id|stringformat:"s" studentdetails.student_state %} selected="selected"{% endifequal %}>{{state.state_name}}</option>
+					{% endfor %}
+					</select></br>
+				</div>
+				<div class="form-group">
+					<label for="name">Pincode</label></br>
+					<input type="text" value="{{studentdetails.student_pincode}}" name="student_pincode" id="student_pincode" class="form-control" placeholder="Student Pincode"></br>
+				</div>
+				<div class="form-group">
+					<label for="name">Course</label></br>
+					<select name="student_course_id" required class="form-control" placeholder="Select Course" autofocus="" /> 
+					<option value="">Select Course</option>
+					{% for course in courselist %}
+					<option value="{{ course.course_id }}" {% ifequal course.course_id|stringformat:"s" studentdetails.student_course_id %} selected="selected"{% endifequal %}>{{course.course_name}}</option>
+					{% endfor %}
+					</select></br>
+				</div>
+				<div class="form-group">
+					<label for="name">Admission Date</label></br>
+					<input type="text" value="{{studentdetails.student_admission_date}}" name="student_admission_date" id="student_admission_date" placeholder="Admission Date"></br>
+				</div>
+				<div class="form-group">
+					<label for="name">Photo</label></br>
+					<input type="file" accept="image/*" class="form-control" placeholder="Student Photo" autofocus="" name="student_photo" id="student_photo"
+					 value="{{studentdetails.student_photo}}">
+					{% if studentdetails.student_photo %}
+					<div class="clearfix" style="margin-top:20px;"><img src="{{studentdetails.student_photo}}" style="width: 100px"></div><br>
+					{% endif %}
+				</div>
+				<div class="clear"></div>
+				<div class="form-group" style="clear:both">
+					<label for="name">Address</label>
+					<textarea class="form-control" style="height:150px;" placeholder="Description" autofocus="" name="student_address" id="student_address">{{studentdetails.student_address}}</textarea>
+				</div>
+				<br><br>
+				<button class="btn-sub" type="submit">Save Record</button></br></br>
+		
+			<input type="hidden" name="act" value="save_student">
+			<input type="hidden" name="avail_image" value="{{studentdetails.student_photo}}">
+			<input type="hidden" name="student_id" value="{{studentdetails.student_id}}">
+		</form>
+		<div class="cleaner"></div>
+	</div>
+
+	<div class="cleaner"></div>
+</div>
+<!-- end of content wrapper -->
+</div>
+<!-- end of content wrapper -->
+{% endblock content %}
