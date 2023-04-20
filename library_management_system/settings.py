@@ -89,7 +89,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'library_management_system',
         'USER':'root',
-        'PASSWORD':'liveandletlive',
+        'PASSWORD':'vijay',
         'HOST':'localhost',
         'PORT':'3306'
     }
