@@ -5,7 +5,7 @@ from django.core.files.storage import FileSystemStorage
 from .models import user
 from django.contrib import messages
 from django.db import connection
-
+from .usersmodule.module import checkloginpassword
 
 # Create your views here.
 def index(request):
@@ -59,11 +59,16 @@ def logout(request):
 def changepassword(request):
     if (request.method == "POST"):
         try:
-            addUser = user(
-                user_id = request.session.get('user_id', None),
-                user_password = request.POST['user_new_password']
-            )
-            addUser.save(update_fields=["user_password"])
+            if (request.POST['user_new_password']):
+                canchnagepassword = checkloginpassword(request.POST['user_new_password'])
+                if canchnagepassword == True:
+                    addUser = user(
+                        user_id = request.session.get('user_id', None),
+                        user_password = request.POST['user_new_password']
+                    )
+                    addUser.save(update_fields=["user_password"])
+                else:
+                    return HttpResponse(canchnagepassword)
         except Exception (e):
             return HttpResponse('Something went wrong. Error Message : '+ str(e))
         messages.add_message(request, messages.INFO, "Your Password has been changed successfully !!!")

@@ -8,14 +8,14 @@ Licence URI: http://www.os-templates.com/template-terms
 File: Navigation CSS
 */
 
-#topnav{display:block; float:left; width:660px; margin:0; padding:0; list-style:none; font-size:13px; font-weight:normal; font-family:Verdana, Arial, Helvetica, sans-serif; color:#FFFFFF; background-color:#2684b7;}
+#topnav{display:block; float:left; width:660px; margin:0; padding:0; list-style:none; font-size:13px; font-weight:normal; font-family:Verdana, Arial, Helvetica, sans-serif; color:#FFFFFF; background-color:#060707;}
 #topnav ul, #topnav li{float:left; list-style:none; margin:0; padding:0;}
-#topnav li a:link, #topnav li a:visited, #topnav li a:hover{display:block; margin:0; padding:15px 20px; color:#FFFFFF; background-color:#2684b7;}
+#topnav li a:link, #topnav li a:visited, #topnav li a:hover{display:block; margin:0; padding:15px 20px; color:#FFFFFF; background-color:#050505;}
 #topnav ul ul li a:link, #topnav ul ul li a:visited{border:none;}
 #topnav li.last a{margin-right:0;}
-#topnav li a:hover, #topnav ul li.active a{color:#FFFFFF; background-color:#059BD8;}
-#topnav li li a:link, #topnav li li a:visited{width:150px; float:none; margin:0; padding:7px 10px; font-size:12px; font-weight:normal; color:#FFFFFF; background-color:#2684b7;}
-#topnav li li a:hover{color:#FFFFFF; background-color:#059BD8;}
+#topnav li a:hover, #topnav ul li.active a{color:#FFFFFF; background-color:#060707;}
+#topnav li li a:link, #topnav li li a:visited{width:150px; float:none; margin:0; padding:7px 10px; font-size:12px; font-weight:normal; color:#FFFFFF; background-color:#050505;}
+#topnav li li a:hover{color:#FFFFFF; background-color:#060707;}
 #topnav li ul{background:#FFFFFF; z-index:9999; position:absolute; left:-999em; height:auto; width:170px; border-left:1px solid #FFFFFF; border-bottom:1px solid #FFFFFF;}
 #topnav li ul a{width:140px;}
 #topnav li ul ul{margin:-32px 0 0 0;}
@@ -32,7 +32,7 @@ File: Navigation CSS
 #column .subnav li{margin:0 0 3px 0; padding:0;}
 #column .subnav ul ul, #column .subnav ul ul ul, #column .subnav ul ul ul ul, #column .subnav ul ul ul ul ul{border-top:none; padding-top:0;}
 #column .subnav a{display:block; margin:0; padding:5px 10px 5px 20px; color:#777777; background:url("images/blue_file.gif") no-repeat 10px center #F9F9F9; text-decoration:none; border-bottom:1px dotted #666666;}
-#column .subnav a:hover{color:#2684B7; background-color:#F9F9F9;}
+#column .subnav a:hover{color:#060707; background-color:#F9F9F9;}
 #column .subnav ul ul a, #column .subnav ul ul ul a, #column .subnav ul ul ul ul a, #column .subnav ul ul ul ul ul a{background:url("images/black_file.gif") no-repeat #F9F9F9;}
 #column .subnav ul ul a{padding-left:40px; background-position:30px center;}
 #column .subnav ul ul ul a{padding-left:50px; background-position:40px center;}

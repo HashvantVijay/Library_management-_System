@@ -51,5 +51,5 @@ select{
 /* ----------------------------------------------Newsletter------------------------------------- */
 
 #footer form{display:block; width:300px; margin:0; padding:10px 0 0 0; border:none;}
-#footer input{display:block; width:218px; margin:0 0 10px 0; padding:5px; color:#FFFFFF; background-color:#2684B7; border:1px solid #1C5E82; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px;}
+#footer input{display:block; width:218px; margin:0 0 10px 0; padding:5px; color:#FFFFFF; background-color:#050505; border:1px solid #1C5E82; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px;}
 #footer input#login_go{width:58px; height:62px; margin:0; padding:0; font-weight:bold; text-transform:uppercase; font-family:Georgia, "Times New Roman", Times, serif; font-size:60px; cursor:pointer;}

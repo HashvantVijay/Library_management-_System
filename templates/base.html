@@ -33,16 +33,31 @@
     <br class="clear" />
   </div>
 </div>
-<div class="wrapper col2">
-  <div id="topbar">
-    <div id="topnav">
+<div class="wrapper col2" style="
+background-color: black;
+" >
+  <div id="topbar" style="
+  background-color: black;
+  ">
+    <div class="navbar" id="topnav"  style="
+background-color: black;
+">
 	<ul>
 	{% if request.session.user_id == 1 %}
-	<li><a href="/users/dashboard">Home</a></li>
+	<li 
+  ><a href="/users/dashboard" style="
+  background-color: black;
+" >Home</a></li>
 	{% else %}
-	<li><a href="/" class="current">Home</a></li>
-	<li><a href="/pages/about">About</a></li>
-	<li><a href="/pages/contact">Contact</a></li>
+	<li><a href="/" class="current" style="
+    background-color: black;
+">Home</a></li>
+	<li><a href="/pages/about" style="
+    background-color: black;
+">About</a></li>
+	<li><a href="/pages/contact" style="
+    background-color: black;
+">Contact</a></li>
 	{% endif %}
 	
 	{% if request.session.user_id == 1 %}
@@ -74,7 +89,9 @@
 	<li><a href="/users/logout">Logout</a></li>
 	{% else %}
 	
-	<li><a href="/users">Login</a></li>
+	<li><a href="/users" style="
+    background-color: black
+">Login</a></li>
 	{% endif %}
 
 </ul>
@@ -84,13 +101,6 @@
 </div>
 	<!--header end-->
 	{% block content %} {% endblock content %}
-</div>
-<div class="wrapper col7">
-  <div id="copyright">
-    <p class="fl_left">Copyright &copy; 2017 - All Rights Reserved - <a href="#">Library Management System</a></p>
-    
-    <br class="clear" />
-  </div>
 </div>
 </body>
 </html>
